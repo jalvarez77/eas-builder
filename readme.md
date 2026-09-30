@@ -14,6 +14,8 @@ Build de la imagen (solo cuando cambie el Dockerfile):
 docker build -t ghcr.io/jalvarez77/eas-android-builder:1.0.0 .
 ```
 
+PRECAUCIÓN: no subir imagen a ningun registry mientras cmake y ndk esten dentro de ella. revisar dockerfile.
+
 ## 2. Access Token de Expo
 
 Generar en: https://expo.dev/accounts/jalvarez77/settings/access-tokens
