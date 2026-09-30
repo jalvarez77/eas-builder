@@ -38,7 +38,6 @@ Archivo: `~/.local/bin/eas-build-local-jaccessapp`
 ```bash
 #!/bin/bash
 docker run --rm -t \
-  --dns 1.1.1.1 --dns 8.8.8.8 \
   -e EXPO_TOKEN \
   -v ~/projects/jaccess/jaccessfe:/workspace \
   -v eas-gradle-cache:/root/.gradle \
