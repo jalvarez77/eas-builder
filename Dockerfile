@@ -17,4 +17,6 @@ RUN mkdir -p $ANDROID_SDK_ROOT/cmdline-tools && \
 RUN yes | sdkmanager --licenses && \
     sdkmanager "platform-tools" "platforms;android-36" "build-tools;36.0.0"
 
+RUN sdkmanager "ndk;27.1.12297006" "cmake;3.22.1"
+
 WORKDIR /workspace
