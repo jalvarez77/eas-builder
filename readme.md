@@ -61,6 +61,28 @@ echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
 source ~/.bashrc
 ```
 
+## Config properties de gradle
+
+```bash
+docker run --rm -v eas-gradle-cache:/root/.gradle --entrypoint bash \
+  ghcr.io/jalvarez77/eas-android-builder:1.0.0 -c 'cat > /root/.gradle/gradle.properties <<EOF
+systemProp.org.gradle.internal.http.connectionTimeout=60000
+systemProp.org.gradle.internal.http.socketTimeout=60000
+systemProp.org.gradle.internal.repository.max.retries=5
+systemProp.org.gradle.internal.repository.initial.backoff=1000
+reactNativeArchitectures=armeabi-v7a,arm64-v8a
+org.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=1g
+org.gradle.parallel=true
+org.gradle.caching=true
+EOF'
+```
+
+Qué hace cada grupo:
+
+- Las 4 líneas systemProp...: hacen que Gradle reintente las descargas si la red falla.
+- reactNativeArchitectures=armeabi-v7a,arm64-v8a: compila solo para teléfonos reales (quita x86 y x86_64, que son para emuladores). Sirve también para la tienda.
+- Las 3 últimas: más memoria y builds más rápidos.
+
 ## 4. Correr el build
 
 ```bash
