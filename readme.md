@@ -11,7 +11,7 @@ Dockerfile guardado aparte. Contiene: JDK 17, Node 20, `eas-cli`, Android SDK (A
 Build de la imagen (solo cuando cambie el Dockerfile):
 
 ```bash
-docker build -t eas-android-builder .
+docker build -t ghcr.io/jalvarez77/eas-android-builder:1.0.0 .
 ```
 
 ## 2. Access Token de Expo
@@ -41,7 +41,7 @@ docker run --rm -t \
   -e EXPO_TOKEN \
   -v ~/projects/jaccess/jaccessfe:/workspace \
   -v eas-gradle-cache:/root/.gradle \
-  eas-android-builder \
+  ghcr.io/jalvarez77/eas-android-builder:1.0.0 \
   eas "$@"
 ```
 
